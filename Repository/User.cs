@@ -16,28 +16,36 @@ namespace Identity_API.Repository
             _context = context;
         }
 
-        public async Task<MessageHelper> CreateUser(DTO.User cretae)
+        public async Task<MessageHelper> CreateUser(List<DTO.User> cretae)
         {
             try
             {
-                var check = _context.TblUsers.Where(x => x.StrPhone == cretae.PhoneNo
-                || x.StrEmail == cretae.EmailId && x.IsActive == true).FirstOrDefault();
+                var userList = new List<Models.TblUser>();
 
-                if (check != null)
-                    throw new Exception("User Already Exist");
-
-                var data = new Models.TblUser
+                foreach(var itm in cretae)
                 {
-                    StrUserName = cretae.UserName,
-                    StrPassword = cretae.Password,
-                    StrEmail = cretae.EmailId,
-                    StrPhone = cretae.PhoneNo,
-                    IsActive = true,
-                    IsMasterUser = cretae.isMasterUser,
-                    DteInsertTime = DateTime.Now
-                };
+                    var check = _context.TblUsers.Where(x => x.StrPhone == itm.PhoneNo
+                    || x.StrEmail == itm.EmailAddress && x.IsActive == true).FirstOrDefault();
 
-                await _context.TblUsers.AddAsync(data);
+                    if (check != null)
+                        throw new Exception("User Already Exist");
+
+                    var data = new Models.TblUser
+                    {
+                        StrUserName = itm.UserName,
+                        StrPassword = itm.Password,
+                        StrEmail = itm.EmailAddress,
+                        StrPhone = itm.PhoneNo,
+                        IsActive = true,
+                        IsMasterUser = itm.isMasterUser,
+                        DteInsertTime = DateTime.Now
+                    };
+
+                    userList.Add(data);
+                }
+
+
+                await _context.TblUsers.AddRangeAsync(userList);
                 await _context.SaveChangesAsync();
 
                 return new MessageHelper

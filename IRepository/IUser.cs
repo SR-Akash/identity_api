@@ -9,6 +9,6 @@ namespace Identity_API.IRepository
 {
     public interface IUser
     {
-        public Task<MessageHelper> CreateUser(User cretae);
+        public Task<MessageHelper> CreateUser(List<User> cretae);
     }
 }

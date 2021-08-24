@@ -24,7 +24,7 @@ namespace Identity_API.Controller
 
         [HttpPost]
         [Route("CreateUser")]
-        public async Task<MessageHelper> CreateUser (User Create)
+        public async Task<MessageHelper> CreateUser (List<User> Create)
         {
             var msg = await _IRepository.CreateUser(Create);
             return msg;
