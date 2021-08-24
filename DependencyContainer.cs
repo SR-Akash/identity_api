@@ -13,6 +13,7 @@ namespace Identity_API
         public static void RegisterServices(IServiceCollection services)
         {
             services.AddTransient<IUser, User>();
+            services.AddTransient<ILoginRepository, LoginRepository>();
 
         }
 

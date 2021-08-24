@@ -96,3 +96,6 @@ C:\MY PROJECT\identity_api\obj\Debug\net5.0\Identity_API.dll
 C:\MY PROJECT\identity_api\obj\Debug\net5.0\ref\Identity_API.dll
 C:\MY PROJECT\identity_api\obj\Debug\net5.0\Identity_API.pdb
 C:\MY PROJECT\identity_api\obj\Debug\net5.0\Identity_API.genruntimeconfig.cache
+C:\MY PROJECT\identity_api\bin\Debug\net5.0\NLog.dll
+C:\MY PROJECT\identity_api\bin\Debug\net5.0\Serilog.dll
+C:\MY PROJECT\identity_api\obj\Debug\net5.0\Identity_API.csprojAssemblyReference.cache
