@@ -59,5 +59,20 @@ namespace Identity_API.Repository
                 throw e;
             }
         }
+
+        public async Task<List<DTO.User>> GetUserList()
+        {
+            return await Task.FromResult((from a in _context.TblUsers
+                                          where a.IsActive == true
+                                          select new DTO.User
+                                          {
+                                              UserId = a.IntUserId,
+                                              UserName = a.StrUserName,
+                                              PhoneNo = a.StrPhone,
+                                              EmailAddress = a.StrEmail,
+                                              Password = a.StrPassword,
+                                              isMasterUser = a.IsMasterUser
+                                          }).ToList());
+        }
     }
 }

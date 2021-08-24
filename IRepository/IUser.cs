@@ -10,5 +10,6 @@ namespace Identity_API.IRepository
     public interface IUser
     {
         public Task<MessageHelper> CreateUser(List<User> cretae);
+        public Task<List<User>> GetUserList();
     }
 }
